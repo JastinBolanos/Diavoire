@@ -99,7 +99,7 @@ export const FuturisticRingHero: React.FC<FuturisticRingHeroProps> = ({ onExplor
 
         {/* Ring Image Frame with High Clarity Lighting */}
         <div
-          className="relative w-full aspect-square flex items-center justify-center rounded-3xl transition-transform duration-500 ease-out z-10"
+          className="relative w-full aspect-square flex items-center justify-center transition-transform duration-500 ease-out z-10"
           style={{
             transform: `rotateX(${-mousePos.y * 0.45}deg) rotateY(${mousePos.x * 0.45}deg) scale(${
               isZoomed ? 1.15 : 1.0
@@ -107,17 +107,23 @@ export const FuturisticRingHero: React.FC<FuturisticRingHeroProps> = ({ onExplor
             transformStyle: 'preserve-3d',
           }}
         >
-          {/* Ultra High-Definition Crystal Clear Diamond Ring */}
-          <img
-            src="/ultra-diamond-ring.jpg"
-            alt="Diavoire Solaris Nocturne 5.42 CT Flawless Diamond Ring"
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-contain filter drop-shadow-[0_20px_50px_rgba(6,182,212,0.45)] contrast-[1.08] brightness-[1.06] select-none pointer-events-auto rounded-3xl"
-            loading="eager"
-          />
+          {/* Circular Image Clipping Portal Container */}
+          <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-cyan-400/40 shadow-[0_0_60px_rgba(6,182,212,0.5),inset_0_0_40px_rgba(6,182,212,0.25)]">
+            {/* Ultra High-Definition Crystal Clear Diamond Ring */}
+            <img
+              src="/ultra-diamond-ring.jpg"
+              alt="Diavoire Solaris Nocturne 5.42 CT Flawless Diamond Ring"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover filter contrast-[1.08] brightness-[1.06] select-none pointer-events-auto rounded-full"
+              loading="eager"
+            />
 
-          {/* Prismatic Light Flare Overlay */}
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-cyan-500/10 via-transparent to-white/15 opacity-60 pointer-events-none mix-blend-screen" />
+            {/* Prismatic Light Flare Overlay */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500/10 via-transparent to-white/15 opacity-60 pointer-events-none mix-blend-screen" />
+
+            {/* Subtle inner circular rim glow */}
+            <div className="absolute inset-0 rounded-full border border-cyan-300/30 pointer-events-none" />
+          </div>
 
           {/* Left Companion Flank Diamond on Ring Setting */}
           <div
