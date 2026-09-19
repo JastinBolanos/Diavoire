@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, Heart, ShoppingBag, ShieldCheck, Award, Sparkles, Check } from 'lucide-react';
 import { JewelryItem } from '../types';
 import { JewelryVisual } from './JewelryVisual';
+import { DiavoireLogo } from './DiavoireLogo';
 
 interface ProductDetailModalProps {
   item: JewelryItem | null;
@@ -67,9 +68,12 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         <div className="md:w-1/2 p-6 flex flex-col justify-between text-left space-y-4">
           <div>
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold tracking-widest text-cyan-400 uppercase font-tech">
-                DIAVOIRE HAUTE JOAILLERIE
-              </span>
+              <div className="flex items-center gap-2">
+                <DiavoireLogo size="sm" variant="emblem" glow={false} />
+                <span className="text-[11px] font-bold tracking-[0.2em] text-cyan-400 uppercase font-cinzel">
+                  DIAVOIRE HAUTE JOAILLERIE
+                </span>
+              </div>
               <button
                 onClick={() => onToggleWishlist(item.id)}
                 className={`p-1.5 rounded-full transition-colors ${

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Search, User, Heart, ShoppingBag, Diamond } from 'lucide-react';
+import { Search, User, Heart, ShoppingBag } from 'lucide-react';
 import { ActiveNavTab } from '../types';
+import { DiavoireLogo } from './DiavoireLogo';
 
 interface NavbarProps {
   activeTab: ActiveNavTab;
@@ -42,22 +43,9 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Brand Logo */}
         <div 
           onClick={() => onSelectTab('HOME')}
-          className="flex items-center gap-3 cursor-pointer group select-none shrink-0"
+          className="shrink-0"
         >
-          {/* Geometric Diamond Emblem */}
-          <div className="relative w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-900/60 to-purple-950/60 border border-cyan-400/40 flex items-center justify-center p-1.5 shadow-[0_0_15px_rgba(6,182,212,0.3)] group-hover:shadow-[0_0_25px_rgba(6,182,212,0.6)] group-hover:border-cyan-300 transition-all duration-300">
-            <Diamond className="w-5 h-5 text-cyan-300 stroke-[1.75] group-hover:scale-110 transition-transform drop-shadow-[0_0_8px_rgba(56,189,248,0.8)]" />
-            <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-cyan-400 animate-ping opacity-75" />
-          </div>
-
-          <div className="flex flex-col">
-            <span className="font-cinzel text-xl md:text-2xl font-bold tracking-[0.18em] text-white group-hover:text-cyan-200 transition-colors drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-              DIAVOIRE
-            </span>
-            <span className="text-[9px] tracking-[0.35em] text-slate-400 font-medium -mt-1 group-hover:text-cyan-300/80 transition-colors">
-              FINE JEWELRY
-            </span>
-          </div>
+          <DiavoireLogo size="md" subtitle="FINE JEWELRY" />
         </div>
 
         {/* Navigation Tabs */}

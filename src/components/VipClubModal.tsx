@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Crown, Sparkles, Check, Copy } from 'lucide-react';
+import { DiavoireLogo } from './DiavoireLogo';
 
 interface VipClubModalProps {
   isOpen: boolean;
@@ -39,8 +40,8 @@ export const VipClubModal: React.FC<VipClubModalProps> = ({ isOpen, onClose }) =
           <X className="w-4 h-4" />
         </button>
 
-        <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 shadow-[0_0_20px_rgba(251,191,36,0.4)] mb-4">
-          <Crown className="w-6 h-6" />
+        <div className="flex flex-col items-center mb-3">
+          <DiavoireLogo size="lg" variant="emblem" glow={true} />
         </div>
 
         <h2 className="font-cinzel text-xl font-bold text-white tracking-wide">

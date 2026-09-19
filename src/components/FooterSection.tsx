@@ -11,6 +11,7 @@ import {
   Gem,
   Award
 } from 'lucide-react';
+import { DiavoireLogo } from './DiavoireLogo';
 
 interface FooterSectionProps {
   onSelectCategory: (cat: string) => void;
@@ -76,11 +77,8 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
       <div className="py-16 px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 w-full max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
         {/* Brand Column */}
         <div className="lg:col-span-2 space-y-4">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-cyan-400 via-blue-600 to-indigo-900 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.5)] border border-cyan-300/40">
-              <span className="font-serif font-black text-slate-950 text-sm">D</span>
-            </div>
-            <span className="font-serif tracking-[0.25em] text-white text-lg font-light">DIAVOIRE</span>
+          <div onClick={scrollToTop}>
+            <DiavoireLogo size="sm" subtitle="HAUTE JOAILLERIE • GENÈVE" />
           </div>
 
           <p className="text-xs text-slate-400 font-light leading-relaxed max-w-sm">
