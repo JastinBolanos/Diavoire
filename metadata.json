@@ -1,0 +1,6 @@
+{
+  "name": "Diavoire",
+  "description": "Futuristic luxury fine jewelry maison featuring exceptional diamonds, rings, bespoke commissions, gemological 4Cs atelier, and complete master archives.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

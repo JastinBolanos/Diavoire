@@ -1,0 +1,149 @@
+import { JewelryItem } from '../types';
+
+export const FEATURED_JEWELRY: JewelryItem[] = [
+  {
+    id: 'dia-1',
+    name: 'Diamond Infinity Pendant',
+    price: 1250,
+    category: 'necklaces',
+    image: '/products/infinity-pendant.jpg',
+    carat: '1.45 ct TW',
+    metal: '18K White Gold',
+    clarity: 'VVS1',
+    cut: 'Brilliant Pear & Round',
+    description: 'An ethereal infinity drop pendant illuminated by cascading micro-pavé diamonds wrapping around an exceptional center diamond.',
+    inStock: true
+  },
+  {
+    id: 'dia-2',
+    name: 'Emerald Halo Ring',
+    price: 2450,
+    category: 'rings',
+    badge: 'BESTSELLER',
+    badgeColor: 'from-fuchsia-600 to-pink-600',
+    image: '/products/emerald-halo-ring.jpg',
+    carat: '2.80 ct',
+    metal: '18K Rose Gold & Platinum',
+    clarity: 'Eye Clean (AAA)',
+    cut: 'Cushion Cut Emerald',
+    description: 'Deep verdant Colombian emerald bordered by a radiant double halo of scintillation-cut lab diamonds on an intertwined rose gold shank.',
+    inStock: true
+  },
+  {
+    id: 'dia-3',
+    name: 'Solitaire Diamond Ring',
+    price: 2890,
+    category: 'rings',
+    badge: 'NEW',
+    badgeColor: 'from-cyan-500 to-blue-600',
+    image: '/products/solitaire-diamond-ring.jpg',
+    carat: '3.15 ct',
+    metal: '950 Pure Platinum',
+    clarity: 'FL (Flawless)',
+    cut: 'Super Ideal Hearts & Arrows',
+    description: 'The pinnacle of diamond artistry: a mesmerizing 3+ carat center stone nestled in a secure six-prong cathedral setting with hidden diamond collar.',
+    inStock: true
+  },
+  {
+    id: 'dia-4',
+    name: 'Diamond Drop Earrings',
+    price: 1150,
+    category: 'earrings',
+    badge: 'LIMITED',
+    badgeColor: 'from-violet-600 to-indigo-600',
+    image: '/products/diamond-drop-earrings.jpg',
+    carat: '1.90 ct TW',
+    metal: '18K White Gold',
+    clarity: 'VVS2',
+    cut: 'Dual Teardrop Faceted',
+    description: 'Suspended like crystallized starlight, these chandeliers catch every movement with fluid articulation and high-refraction pavé stones.',
+    inStock: true
+  },
+  {
+    id: 'dia-5',
+    name: 'Tennis Bracelet',
+    price: 2150,
+    originalPrice: 2800,
+    category: 'bracelets',
+    badge: 'SALE',
+    badgeColor: 'from-rose-600 to-amber-600',
+    image: '/products/tennis-bracelet.jpg',
+    carat: '4.50 ct TW',
+    metal: '14K White Gold',
+    clarity: 'VS1',
+    cut: 'Continuous Round Brilliant',
+    description: 'A continuous river of fire featuring 52 perfectly matched round brilliant diamonds secured with double safety clasps for effortless modern luxury.',
+    inStock: true
+  }
+];
+
+export const ALL_JEWELRY: JewelryItem[] = [
+  ...FEATURED_JEWELRY,
+  {
+    id: 'dia-6',
+    name: 'Celestial Sapphire Choker',
+    price: 3400,
+    category: 'necklaces',
+    badge: 'LIMITED',
+    badgeColor: 'from-blue-600 to-cyan-500',
+    image: '/products/sapphire-choker.jpg',
+    carat: '5.20 ct TW',
+    metal: 'Platinum & 18K Yellow Gold',
+    clarity: 'VVS1',
+    cut: 'Emerald Cut Sapphire',
+    description: 'Royal midnight sapphire flanked by baguette diamonds and hand-woven platinum mesh.',
+    inStock: true
+  },
+  {
+    id: 'dia-7',
+    name: 'Hyperion Diamond Ring',
+    price: 4900,
+    category: 'rings',
+    badge: 'NEW',
+    badgeColor: 'from-cyan-400 to-indigo-600',
+    image: '/products/hyperion-ring.jpg',
+    carat: '4.00 ct',
+    metal: 'Titanium & 950 Platinum',
+    clarity: 'IF',
+    cut: 'Futuristic Radiant',
+    description: 'Ultra-modern tension-set diamond hovering above aerospace-grade hand-brushed platinum.',
+    inStock: true
+  },
+  {
+    id: 'dia-8',
+    name: 'Aurelia Celestial Band',
+    price: 1850,
+    category: 'rings',
+    badge: 'EXCLUSIVE',
+    badgeColor: 'from-amber-500 to-orange-600',
+    image: '/products/aurelia-gold-ring.jpg',
+    carat: '2.10 ct TW',
+    metal: '18K Yellow Gold',
+    clarity: 'VVS2',
+    cut: 'French Pavé Brilliant',
+    description: 'Architectural ring sculpted from warm 18-karat recycled gold embedded with certified diamond facets.',
+    inStock: true
+  },
+  {
+    id: 'dia-9',
+    name: 'Star Sapphire Signet',
+    price: 3800,
+    category: 'rings',
+    badge: 'RARE',
+    badgeColor: 'from-indigo-600 to-purple-600',
+    image: '/products/star-sapphire.jpg',
+    carat: '6.80 ct',
+    metal: '950 Pure Platinum',
+    clarity: 'Asterism 6-Ray',
+    cut: 'High Dome Cabochon',
+    description: 'Natural unheated star sapphire displaying sharp celestial asterism under direct light.',
+    inStock: true
+  }
+];
+
+export const CUSTOMER_AVATARS = [
+  { name: 'Elena Vance', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop' },
+  { name: 'Marcus Sterling', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop' },
+  { name: 'Chloe Chen', img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=150&auto=format&fit=crop' },
+  { name: 'Sophie Laurent', img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=150&auto=format&fit=crop' },
+];
