@@ -3,13 +3,9 @@ import React, { useEffect, useRef, useState } from 'react';
 export type RainColorPalette = 'pearlescent-blue' | 'emerald-neon';
 
 interface AerodynamicNeonRainProps {
-  /** Palette: 'pearlescent-blue' (celeste brillante / azul perlado) or 'emerald-neon' */
   palette?: RainColorPalette;
-  /** Opacity multiplier of the overall canvas */
   opacity?: number;
-  /** Allow custom z-index (default 1 for background behind UI, pointer-events none) */
   zIndex?: number;
-  /** Whether the effect is currently active */
   enabled?: boolean;
 }
 
@@ -22,7 +18,6 @@ interface Drop {
   length: number;
 }
 
-// Fixed-pool Ripple structure (zero allocation during animation loop)
 interface PoolRipple {
   active: boolean;
   x: number;
@@ -34,7 +29,6 @@ interface PoolRipple {
   color: string;
 }
 
-// Fixed-pool Spark structure (zero allocation during animation loop)
 interface PoolSpark {
   active: boolean;
   x: number;
@@ -68,7 +62,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
   const [activePalette, setActivePalette] = useState<RainColorPalette>(palette);
   const [isVisible, setIsVisible] = useState(enabled);
 
-  // Synchronize state if props change
   useEffect(() => {
     setActivePalette(palette);
   }, [palette]);
@@ -88,7 +81,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
     let animationFrameId: number;
     let isRunning = true;
 
-    // Viewport dimensions & DPR capping for rock-solid 60/120 FPS
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     let cssWidth = window.innerWidth;
     let cssHeight = window.innerHeight;
@@ -104,13 +96,9 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
     };
     resizeCanvas();
 
-    // Aerodynamic angle: 12.5 degrees to the right
-    // tan(12.5 deg) ~= 0.22169 -> dx = speed * 0.2217
     const WIND_TAN = 0.2217;
     const WIND_ANGLE = 12.5 * (Math.PI / 180);
 
-    // Color definitions (4 colors each to ensure identical index mapping)
-    // 1. Celeste brillante / Azul perlado (User requested)
     const BLUE_PALETTE = {
       colors: ['#00f0ff', '#7dd3fc', '#38bdf8', '#bae6fd'],
       primary: '#00f0ff',
@@ -118,7 +106,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
       orb: 'rgba(56, 189, 248, 0.45)',
     };
 
-    // 2. Esmeralda neón / Lima eléctrico
     const GREEN_PALETTE = {
       colors: ['#00ff88', '#67eb34', '#4ade80', '#a7f3d0'],
       primary: '#00ff88',
@@ -128,18 +115,12 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
 
     const currentPalette = activePalette === 'emerald-neon' ? GREEN_PALETTE : BLUE_PALETTE;
 
-    // --- SLOW & SERENE LAYER CONFIGURATIONS (Lenta, elegante, fluida) ---
-    // Speeds are gentle, meditative, and cinematic (1.0 - 3.5 px/frame)
     const layerConfigs = [
-      // Layer 0: Fondo lejano (muy suave, lento, tenue)
       { length: 24, width: 1.1, speedMin: 0.9, speedMax: 1.5, opacity: 0.22, count: 40, hasHead: false },
-      // Layer 1: Plano medio (velocidad pausada, balanceada)
       { length: 42, width: 1.6, speedMin: 1.6, speedMax: 2.5, opacity: 0.65, count: 32, hasHead: false },
-      // Layer 2: Primer plano (haces largos con perla luminosa en punta)
       { length: 62, width: 2.2, speedMin: 2.6, speedMax: 3.8, opacity: 0.9, count: 22, hasHead: true },
     ];
 
-    // --- SPRITE PRE-RENDERING IN OFFSCREEN CANVASES (Zero shadowBlur at runtime) ---
     const streakSprites: HTMLCanvasElement[][] = layerConfigs.map((cfg) => {
       return currentPalette.colors.map((color) => {
         const offCanvas = document.createElement('canvas');
@@ -159,7 +140,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
         const endX = pad + dx;
         const endY = pad + dy;
 
-        // Gradient: transparent at tail to brilliant neon at head
         const grad = offCtx.createLinearGradient(startX, startY, endX, endY);
         grad.addColorStop(0, 'rgba(255,255,255,0)');
         grad.addColorStop(0.5, color);
@@ -175,7 +155,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
         offCtx.lineTo(endX, endY);
         offCtx.stroke();
 
-        // Layer 2 Head Droplet (perla luminosa en la punta)
         if (cfg.hasHead) {
           offCtx.globalAlpha = 1.0;
           const haloGrad = offCtx.createRadialGradient(endX, endY, 0, endX, endY, 4.5);
@@ -197,7 +176,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
       });
     });
 
-    // Ambient orb sprite (pre-rendered 32x32)
     const orbSprite = document.createElement('canvas');
     orbSprite.width = 32;
     orbSprite.height = 32;
@@ -214,7 +192,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
       orbCtx.fill();
     }
 
-    // --- INSTANTIATE DROPS ---
     const drops: Drop[] = [];
     layerConfigs.forEach((cfg, layerIdx) => {
       const numColors = currentPalette.colors.length;
@@ -231,7 +208,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
       }
     });
 
-    // --- FIXED OBJECT POOLS (Zero memory allocation in render loop) ---
     const MAX_RIPPLES = 24;
     const ripplesPool: PoolRipple[] = Array.from({ length: MAX_RIPPLES }, () => ({
       active: false,
@@ -288,7 +264,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
       }
     };
 
-    // --- AMBIENT PARTICLES (12 motas de polvo / orbes) ---
     const ORB_COUNT = 12;
     const orbs: AmbientOrb[] = [];
     for (let i = 0; i < ORB_COUNT; i++) {
@@ -308,9 +283,8 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
       });
     }
 
-    // --- PASSIVE SCROLL PERFORMANCE OPTIMIZATION ---
     let isScrolling = false;
-    let scrollTimeout: any = null;
+    let scrollTimeout: NodeJS.Timeout | null = null;
     const handleScroll = () => {
       isScrolling = true;
       if (scrollTimeout) clearTimeout(scrollTimeout);
@@ -320,8 +294,7 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
 
-    // Window Resize Handler with Debouncing
-    let resizeTimer: any = null;
+    let resizeTimer: NodeJS.Timeout | null = null;
     const handleResize = () => {
       if (resizeTimer) clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
@@ -330,7 +303,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
     };
     window.addEventListener('resize', handleResize, { passive: true });
 
-    // Page Visibility API: Stop loop completely when tab is hidden (save 100% CPU/GPU)
     const handleVisibilityChange = () => {
       if (document.hidden) {
         isRunning = false;
@@ -342,7 +314,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
     };
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
-    // --- ANIMATION LOOP (Clamped delta-time for silky 60/120 FPS) ---
     let lastTime = performance.now();
 
     const render = (now: number) => {
@@ -350,16 +321,13 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
 
       const deltaMs = now - lastTime;
       lastTime = now;
-      // Clamp delta time to avoid large jumps if window was throttled
       const dt = Math.min(deltaMs / 16.667, 1.8);
 
-      // Clear viewport
       ctx.clearRect(0, 0, cssWidth, cssHeight);
       ctx.globalCompositeOperation = 'lighter';
 
       const extraSlantWidth = cssHeight * WIND_TAN;
 
-      // 1. UPDATE & DRAW DROPS (Safe indexing, zero crash risk)
       for (let i = 0; i < drops.length; i++) {
         const d = drops[i];
         const dx = d.speed * WIND_TAN * dt;
@@ -368,7 +336,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
         d.x += dx;
         d.y += dy;
 
-        // Floor Impact Check
         if (d.y >= cssHeight - 6) {
           if (d.layer >= 1 && !isScrolling) {
             const chance = d.layer === 2 ? 0.65 : 0.35;
@@ -376,7 +343,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
               const maxRx = d.layer === 2 ? 18 + Math.random() * 8 : 12 + Math.random() * 5;
               spawnRipple(d.x, cssHeight - 4, maxRx, d.layer === 2 ? 0.75 : 0.45);
 
-              // 1-2 sparks with gravity
               const sparkCount = Math.random() < 0.5 ? 2 : 1;
               for (let s = 0; s < sparkCount; s++) {
                 spawnSpark(
@@ -389,18 +355,15 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
             }
           }
 
-          // Respawn drop cleanly above top
           d.y = -d.length - Math.random() * 60;
           d.x = Math.random() * (cssWidth + extraSlantWidth * 1.5) - extraSlantWidth;
         }
 
-        // Horizontal offscreen boundary wrap-around (Reset BOTH x and y to prevent visual glitching)
         if (d.x > cssWidth + 80) {
           d.x = Math.random() * (cssWidth + extraSlantWidth * 1.5) - extraSlantWidth;
           d.y = -d.length - Math.random() * 60;
         }
 
-        // Safe sprite fetch with modulo to prevent undefined errors
         const layerSprites = streakSprites[d.layer];
         if (layerSprites && layerSprites.length > 0) {
           const sprite = layerSprites[d.spriteIndex % layerSprites.length];
@@ -410,7 +373,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
         }
       }
 
-      // 2. UPDATE & DRAW SPLASH RIPPLES (Flattened 3D Ellipses, No ctx.save/restore)
       if (!isScrolling) {
         ctx.lineWidth = 1.1;
         for (let r = 0; r < MAX_RIPPLES; r++) {
@@ -418,7 +380,7 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
           if (!rip.active) continue;
 
           rip.rx += (rip.maxRx - rip.rx) * 0.12 * dt + 0.25 * dt;
-          rip.ry = rip.rx * 0.5; // Perspectiva 3D: Radio X es el doble del Radio Y
+          rip.ry = rip.rx * 0.5;
           rip.alpha -= 0.028 * dt;
 
           if (rip.alpha <= 0.01 || rip.rx >= rip.maxRx) {
@@ -434,7 +396,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
         }
       }
 
-      // 3. UPDATE & DRAW SPARKS (With Gravity, No ctx.save/restore)
       if (!isScrolling) {
         const gravity = 0.18;
         for (let s = 0; s < MAX_SPARKS; s++) {
@@ -459,7 +420,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
         }
       }
 
-      // 4. UPDATE & DRAW AMBIENT ORBS (Floating dust motes)
       for (let i = 0; i < orbs.length; i++) {
         const orb = orbs[i];
         orb.phase += orb.freq * dt * 16.667;
@@ -483,7 +443,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
         ctx.drawImage(orbSprite, orb.x - orb.radius, orb.y - orb.radius, drawSize, drawSize);
       }
 
-      // Reset global alpha back to 1.0
       ctx.globalAlpha = 1.0;
 
       animationFrameId = requestAnimationFrame(render);
@@ -506,7 +465,6 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
 
   return (
     <>
-      {/* Hardware-promoted 60/120 FPS Background Canvas */}
       <canvas
         ref={canvasRef}
         id="aerodynamic-neon-rain-canvas"
@@ -521,12 +479,11 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
         aria-hidden="true"
       />
 
-      {/* Floating Pill HUD in bottom-left so it NEVER collides with Navbar or Cart */}
       <div className="fixed bottom-4 left-4 z-40 flex items-center gap-2 pointer-events-auto">
         <div className="bg-slate-950/85 hover:bg-slate-900/95 backdrop-blur-xl border border-cyan-400/40 hover:border-cyan-300/80 rounded-full px-3 py-1.5 text-xs shadow-[0_0_20px_rgba(6,182,212,0.35)] flex items-center gap-2.5 transition-all duration-300">
           <button
             onClick={() => setActivePalette((prev) => (prev === 'pearlescent-blue' ? 'emerald-neon' : 'pearlescent-blue'))}
-            title="Alternar paleta (Azul Perlado / Esmeralda Neón)"
+            title="Alternar paleta"
             className="flex items-center gap-1.5 font-mono text-[11px] text-cyan-300 hover:text-white transition-colors cursor-pointer"
           >
             <span
@@ -535,7 +492,7 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
               }`}
             />
             <span className="font-semibold uppercase tracking-wider">
-              {activePalette === 'pearlescent-blue' ? 'Azul Perlado' : 'Esmeralda Neón'}
+              {activePalette === 'pearlescent-blue' ? 'Pearlescent' : 'Emerald'}
             </span>
           </button>
 
@@ -543,7 +500,7 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
 
           <button
             onClick={() => setIsVisible((prev) => !prev)}
-            title="Activar / Pausar Lluvia Neón"
+            title="Toggle Atmosphere"
             className="text-[10px] text-slate-400 hover:text-cyan-200 transition-colors uppercase font-mono font-bold"
           >
             {isVisible ? 'ON' : 'OFF'}

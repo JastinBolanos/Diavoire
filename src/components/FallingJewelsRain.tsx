@@ -6,12 +6,12 @@ import { JewelryItem } from '../types';
 interface FallingJewelConfig {
   id: string;
   item: JewelryItem;
-  leftPercent: number; // Posición horizontal (0% - 100%)
-  size: number; // Ancho/alto en px
-  durationSec: number; // Tiempo de caída en s
-  delaySec: number; // Retardo en s
-  swayAmplitude: number; // Amplitud del balanceo lateral
-  rotationSpeed: number; // Multiplicador de velocidad de rotación
+  leftPercent: number;
+  size: number;
+  durationSec: number;
+  delaySec: number;
+  swayAmplitude: number;
+  rotationSpeed: number;
   initialRotateZ: number;
   glowColor: string;
   shape: 'octagon' | 'round' | 'cushion';
@@ -25,9 +25,7 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
   const [isPaused, setIsPaused] = useState(false);
   const [hoveredJewelId, setHoveredJewelId] = useState<string | null>(null);
 
-  // Mapeamos joyas reales del catálogo para que caigan en los laterales sin obstruir el anillo central
   const fallingJewels: FallingJewelConfig[] = [
-    // 1. Solitaire Diamond Ring (Lateral Izquierdo)
     {
       id: 'fall-ring-1',
       item: ALL_JEWELRY.find((j) => j.id === 'dia-3') || ALL_JEWELRY[2],
@@ -41,7 +39,6 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
       glowColor: 'rgba(6,182,212,0.4)',
       shape: 'round',
     },
-    // 2. Diamond Infinity Pendant (Lateral Derecho)
     {
       id: 'fall-necklace-1',
       item: ALL_JEWELRY.find((j) => j.id === 'dia-1') || ALL_JEWELRY[0],
@@ -55,7 +52,6 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
       glowColor: 'rgba(168,85,247,0.4)',
       shape: 'octagon',
     },
-    // 3. Colombian Emerald Halo Ring (Extremo Derecho)
     {
       id: 'fall-ring-2',
       item: ALL_JEWELRY.find((j) => j.id === 'dia-2') || ALL_JEWELRY[1],
@@ -69,7 +65,6 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
       glowColor: 'rgba(16,185,129,0.4)',
       shape: 'cushion',
     },
-    // 4. Diamond Drop Earrings (Lateral Izquierdo)
     {
       id: 'fall-earring-1',
       item: ALL_JEWELRY.find((j) => j.id === 'dia-4') || ALL_JEWELRY[3],
@@ -83,7 +78,6 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
       glowColor: 'rgba(217,70,239,0.35)',
       shape: 'octagon',
     },
-    // 5. Tennis Bracelet (Borde Derecho)
     {
       id: 'fall-bracelet-1',
       item: ALL_JEWELRY.find((j) => j.id === 'dia-5') || ALL_JEWELRY[4],
@@ -97,10 +91,9 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
       glowColor: 'rgba(56,189,248,0.35)',
       shape: 'round',
     },
-    // 6. Hyperion Blue Diamond Ring (Lateral Exterior)
     {
       id: 'fall-ring-3',
-      item: ALL_JEWELRY.find((j) => j.id === 'dia-7') || ALL_JEWELRY[2],
+      item: ALL_JEWELRY.find((j) => j.id === 'dia-11') || ALL_JEWELRY[2],
       leftPercent: 78,
       size: 68,
       durationSec: 34,
@@ -111,7 +104,6 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
       glowColor: 'rgba(14,165,233,0.4)',
       shape: 'octagon',
     },
-    // 7. Aurelia Rose Gold Ring (Extremo Izquierdo)
     {
       id: 'fall-ring-4',
       item: ALL_JEWELRY.find((j) => j.id === 'dia-8') || ALL_JEWELRY[1],
@@ -125,10 +117,9 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
       glowColor: 'rgba(245,158,11,0.4)',
       shape: 'cushion',
     },
-    // 8. Royal Sapphire Choker (Lateral Izquierdo Centro)
     {
       id: 'fall-necklace-2',
-      item: ALL_JEWELRY.find((j) => j.id === 'dia-9') || ALL_JEWELRY[0],
+      item: ALL_JEWELRY.find((j) => j.id === 'dia-6') || ALL_JEWELRY[0],
       leftPercent: 32,
       size: 68,
       durationSec: 36,

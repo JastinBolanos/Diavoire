@@ -17,6 +17,9 @@ const PRODUCT_IMAGES: Record<string, string> = {
   'dia-7': '/products/hyperion-ring.jpg',
   'dia-8': '/products/aurelia-gold-ring.jpg',
   'dia-9': '/products/star-sapphire.jpg',
+  'dia-10': '/products/solaris-canary-cuff.jpg',
+  'dia-11': '/products/orion-paraiba-ring.jpg',
+  'dia-12': '/products/cassiopeia-earrings.jpg',
 };
 
 export const JewelryVisual: React.FC<JewelryVisualProps> = ({ id, name, image, className = '' }) => {
@@ -24,7 +27,6 @@ export const JewelryVisual: React.FC<JewelryVisualProps> = ({ id, name, image, c
 
   return (
     <div className={`relative w-full h-full bg-[#020512] flex items-center justify-center overflow-hidden select-none group ${className}`}>
-      {/* Real High-Definition Jewelry Photography */}
       <img
         src={imageSrc}
         alt={name}
@@ -32,11 +34,7 @@ export const JewelryVisual: React.FC<JewelryVisualProps> = ({ id, name, image, c
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 filter contrast-[1.08] brightness-105"
         loading="lazy"
       />
-
-      {/* Subtle glossy bottom reflection vignette */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#020512]/60 via-transparent to-transparent pointer-events-none" />
-
-      {/* Cyberpunk / High-luxury cyan reflection bloom on hover */}
       <div className="absolute inset-0 bg-radial from-cyan-500/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
     </div>
   );

@@ -18,7 +18,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   return (
     <section className="relative w-full flex-1 flex items-center px-4 md:px-8 py-2 md:py-4 z-10 overflow-hidden">
-      {/* 3D Falling and Tumbling Jewels Cascade (Anillos, Collares y Joyas Rotando) */}
       <FallingJewelsRain
         onSelectJewel={(jewel) => {
           if (onSelectProduct) {
@@ -30,9 +29,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       />
 
       <div className="max-w-[1920px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-20">
-        {/* Left Column: Hero Typography & Actions */}
         <div className="lg:col-span-6 xl:col-span-5 flex flex-col justify-center text-left space-y-3.5 md:space-y-4">
-          {/* Eyebrow */}
           <div className="inline-flex items-center gap-2">
             <span className="text-xs md:text-sm font-bold tracking-[0.2em] uppercase bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(6,182,212,0.8)]">
               TIMELESS BEAUTY. PRECIOUS MOMENTS.
@@ -73,9 +70,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </button>
           </div>
 
-          {/* Social Proof & Customer Trust */}
           <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-2 text-xs text-slate-300">
-            {/* Avatars */}
             <div className="flex items-center">
               <div className="flex -space-x-2">
                 {CUSTOMER_AVATARS.map((c, i) => (
@@ -93,14 +88,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </span>
             </div>
 
-            {/* Rating */}
             <div className="flex items-center gap-1.5 border-l border-slate-700/60 pl-4">
               <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
               <span className="font-bold text-white text-xs">4.8</span>
               <span className="text-slate-400 text-[11px]">(2,500+ Reviews)</span>
             </div>
 
-            {/* Trusted Badge */}
             <div className="hidden sm:flex items-center gap-1 text-cyan-400 border-l border-slate-700/60 pl-4 font-medium text-[11px]">
               <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
               <span>Trusted by Thousands</span>
@@ -108,7 +101,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
         </div>
 
-        {/* Right Column: Futuristic Diamond Ring Showcase */}
         <div className="lg:col-span-6 xl:col-span-7 flex items-center justify-center relative min-h-[260px] sm:min-h-[340px] lg:min-h-[420px] xl:min-h-[480px] w-full">
           <FuturisticRingHero onExplore={onExplore} />
         </div>

@@ -79,15 +79,12 @@ export const FeaturedCardsBar: React.FC<FeaturedCardsBarProps> = ({
                     )}
                   </div>
 
-                  {/* Gem Visual Renderer */}
                   <JewelryVisual id={item.id} name={item.name} className="transition-transform duration-500 group-hover:scale-105" />
 
-                  {/* High-tech corner accents */}
                   <div className="absolute top-1 right-1 w-1.5 h-1.5 border-t border-r border-cyan-400/40 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="absolute bottom-1 left-1 w-1.5 h-1.5 border-b border-l border-cyan-400/40 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
 
-                {/* Card Info: Title, Price and Heart Wishlist (Matching NOVARA.png) */}
                 <div className="pt-2 px-1 flex flex-col justify-between">
                   <h3 className="text-white text-xs sm:text-[13px] font-medium tracking-normal truncate group-hover:text-cyan-300 transition-colors">
                     {item.name}
@@ -105,7 +102,6 @@ export const FeaturedCardsBar: React.FC<FeaturedCardsBarProps> = ({
                       )}
                     </div>
 
-                    {/* Heart Wishlist Button at Bottom Right (As in NOVARA.png) */}
                     <button
                       id={`btn-wishlist-${item.id}`}
                       onClick={(e) => {

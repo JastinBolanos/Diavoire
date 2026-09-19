@@ -12,7 +12,7 @@ export const FEATURED_JEWELRY: JewelryItem[] = [
     clarity: 'VVS1',
     cut: 'Brilliant Pear & Round',
     description: 'An ethereal infinity drop pendant illuminated by cascading micro-pavé diamonds wrapping around an exceptional center diamond.',
-    inStock: true
+    inStock: true,
   },
   {
     id: 'dia-2',
@@ -27,7 +27,7 @@ export const FEATURED_JEWELRY: JewelryItem[] = [
     clarity: 'Eye Clean (AAA)',
     cut: 'Cushion Cut Emerald',
     description: 'Deep verdant Colombian emerald bordered by a radiant double halo of scintillation-cut lab diamonds on an intertwined rose gold shank.',
-    inStock: true
+    inStock: true,
   },
   {
     id: 'dia-3',
@@ -41,8 +41,8 @@ export const FEATURED_JEWELRY: JewelryItem[] = [
     metal: '950 Pure Platinum',
     clarity: 'FL (Flawless)',
     cut: 'Super Ideal Hearts & Arrows',
-    description: 'The pinnacle of diamond artistry: a mesmerizing 3+ carat center stone nestled in a secure six-prong cathedral setting with hidden diamond collar.',
-    inStock: true
+    description: 'A captivating 3+ carat center stone nestled in a secure six-prong cathedral setting with hidden diamond collar.',
+    inStock: true,
   },
   {
     id: 'dia-4',
@@ -56,8 +56,8 @@ export const FEATURED_JEWELRY: JewelryItem[] = [
     metal: '18K White Gold',
     clarity: 'VVS2',
     cut: 'Dual Teardrop Faceted',
-    description: 'Suspended like crystallized starlight, these chandeliers catch every movement with fluid articulation and high-refraction pavé stones.',
-    inStock: true
+    description: 'Suspended chandeliers catching light with fluid articulation and high-refraction pavé stones.',
+    inStock: true,
   },
   {
     id: 'dia-5',
@@ -72,9 +72,9 @@ export const FEATURED_JEWELRY: JewelryItem[] = [
     metal: '14K White Gold',
     clarity: 'VS1',
     cut: 'Continuous Round Brilliant',
-    description: 'A continuous river of fire featuring 52 perfectly matched round brilliant diamonds secured with double safety clasps for effortless modern luxury.',
-    inStock: true
-  }
+    description: 'A continuous line of fire featuring 52 matched round brilliant diamonds secured with double safety clasps.',
+    inStock: true,
+  },
 ];
 
 export const ALL_JEWELRY: JewelryItem[] = [
@@ -92,7 +92,7 @@ export const ALL_JEWELRY: JewelryItem[] = [
     clarity: 'VVS1',
     cut: 'Emerald Cut Sapphire',
     description: 'Royal midnight sapphire flanked by baguette diamonds and hand-woven platinum mesh.',
-    inStock: true
+    inStock: true,
   },
   {
     id: 'dia-7',
@@ -107,7 +107,7 @@ export const ALL_JEWELRY: JewelryItem[] = [
     clarity: 'IF',
     cut: 'Futuristic Radiant',
     description: 'Ultra-modern tension-set diamond hovering above aerospace-grade hand-brushed platinum.',
-    inStock: true
+    inStock: true,
   },
   {
     id: 'dia-8',
@@ -122,7 +122,7 @@ export const ALL_JEWELRY: JewelryItem[] = [
     clarity: 'VVS2',
     cut: 'French Pavé Brilliant',
     description: 'Architectural ring sculpted from warm 18-karat recycled gold embedded with certified diamond facets.',
-    inStock: true
+    inStock: true,
   },
   {
     id: 'dia-9',
@@ -137,8 +137,54 @@ export const ALL_JEWELRY: JewelryItem[] = [
     clarity: 'Asterism 6-Ray',
     cut: 'High Dome Cabochon',
     description: 'Natural unheated star sapphire displaying sharp celestial asterism under direct light.',
-    inStock: true
-  }
+    inStock: true,
+  },
+  {
+    id: 'dia-10',
+    name: 'Solaris Canary Diamond Cuff',
+    price: 14800,
+    originalPrice: 16500,
+    category: 'bracelets',
+    badge: 'LIMITED',
+    badgeColor: 'from-amber-400 to-yellow-600',
+    image: '/products/solaris-canary-cuff.jpg',
+    carat: '6.40 ct TW',
+    metal: '18K Yellow Gold',
+    clarity: 'VVS1',
+    cut: 'Radiant & Baguette',
+    description: 'Architectural wide cuff showcasing an intense fancy yellow diamond centerpiece flanked by geometric baguette diamond tiers.',
+    inStock: true,
+  },
+  {
+    id: 'dia-11',
+    name: 'Orion Paraíba Tourmaline Ring',
+    price: 18500,
+    category: 'rings',
+    badge: 'EXCLUSIVE',
+    badgeColor: 'from-cyan-400 to-teal-500',
+    image: '/products/orion-paraiba-ring.jpg',
+    carat: '4.85 ct',
+    metal: '950 Pure Platinum',
+    clarity: 'Electric Neon Hue',
+    cut: 'Cushion Cut Paraíba',
+    description: 'Rare neon cyan-green Paraíba tourmaline surrounded by an intricate double halo of micro-pavé diamonds.',
+    inStock: true,
+  },
+  {
+    id: 'dia-12',
+    name: 'Cassiopeia Chandelier Earrings',
+    price: 8900,
+    category: 'earrings',
+    badge: 'NEW',
+    badgeColor: 'from-slate-200 to-cyan-300',
+    image: '/products/cassiopeia-earrings.jpg',
+    carat: '5.10 ct TW',
+    metal: '18K White Gold',
+    clarity: 'VS1',
+    cut: 'Marquise & Pear Drops',
+    description: 'Luminous South Sea baroque pearls suspended beneath cascading tiers of marquise and pear-cut diamonds.',
+    inStock: true,
+  },
 ];
 
 export const CUSTOMER_AVATARS = [
@@ -147,3 +193,11 @@ export const CUSTOMER_AVATARS = [
   { name: 'Chloe Chen', img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=150&auto=format&fit=crop' },
   { name: 'Sophie Laurent', img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=150&auto=format&fit=crop' },
 ];
+
+export function getJewelryById(id: string): JewelryItem | undefined {
+  return ALL_JEWELRY.find((item) => item.id === id);
+}
+
+export function getJewelryByCategory(category: string): JewelryItem[] {
+  return ALL_JEWELRY.filter((item) => item.category === category);
+}
