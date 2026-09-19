@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Eye, Diamond, ZoomIn, ZoomOut, Maximize2, ShieldCheck, Flame } from 'lucide-react';
+import { Sparkles, Diamond, Maximize2, ShieldCheck, Flame } from 'lucide-react';
+import { FlankingDiamond } from './FlankingDiamond';
 
 interface FuturisticRingHeroProps {
   onExplore: () => void;
@@ -41,11 +42,19 @@ export const FuturisticRingHero: React.FC<FuturisticRingHeroProps> = ({ onExplor
   const HOTSPOTS = [
     {
       id: 1,
-      title: '5.42 CT Flawless Center Solitaire',
+      title: '5.42 CT Center Solitaire',
       desc: 'Type IIa chemical purity, D-Color, VVS1 clarity with maximum light refraction and fiery dispersion.',
       top: '44%',
       left: '50%',
-      badge: 'VVS1 CLARITY',
+      badge: '5.42 CT CENTER',
+    },
+    {
+      id: 4,
+      title: 'Twin Flanking Brilliant Diamonds',
+      desc: 'Symmetrical 1.65 CT companion diamonds flanking both sides of the center stone, completing the Trilogy harmony.',
+      top: '43%',
+      left: '30%',
+      badge: 'TWIN 1.65 CT FLANKS',
     },
     {
       id: 2,
@@ -69,36 +78,28 @@ export const FuturisticRingHero: React.FC<FuturisticRingHeroProps> = ({ onExplor
     <div className="relative w-full flex items-center justify-center select-none overflow-visible py-2">
       {/* Dynamic Ambient Radiant Glow behind the Ring */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
-        <div className="w-[260px] sm:w-[340px] md:w-[400px] lg:w-[480px] xl:w-[520px] h-[260px] sm:h-[340px] md:h-[400px] lg:h-[480px] xl:h-[520px] rounded-full bg-gradient-to-tr from-cyan-500/25 via-sky-400/20 to-purple-600/25 blur-3xl opacity-75 animate-pulse transition-all duration-700" />
+        <div className="w-[340px] sm:w-[460px] md:w-[540px] lg:w-[620px] xl:w-[720px] 2xl:w-[800px] h-[340px] sm:h-[460px] md:h-[540px] lg:h-[620px] xl:h-[720px] 2xl:h-[800px] rounded-full bg-gradient-to-tr from-cyan-500/25 via-sky-400/20 to-purple-600/25 blur-3xl opacity-75 animate-pulse transition-all duration-700" />
         {/* Subtle secondary prismatic halo */}
-        <div className="absolute w-[220px] sm:w-[280px] lg:w-[360px] h-[220px] sm:h-[280px] lg:h-[360px] rounded-full bg-cyan-400/15 blur-2xl pointer-events-none" />
+        <div className="absolute w-[280px] sm:w-[380px] md:w-[440px] lg:w-[520px] xl:w-[600px] 2xl:w-[680px] h-[280px] sm:h-[380px] md:h-[440px] lg:h-[520px] xl:h-[600px] 2xl:h-[680px] rounded-full bg-cyan-400/15 blur-2xl pointer-events-none" />
       </div>
-
-      {/* Floating Holographic Crystal Prisms in the Background */}
-      <div
-        className="absolute -top-4 right-8 w-12 h-20 sm:w-16 sm:h-28 rounded-xl bg-gradient-to-br from-purple-500/25 via-indigo-600/15 to-transparent border border-purple-400/30 backdrop-blur-md rotate-[25deg] shadow-[0_0_25px_rgba(168,85,247,0.25)] pointer-events-none transition-transform duration-700"
-        style={{
-          transform: `translate(${mousePos.x * 0.35}px, ${mousePos.y * 0.35}px) rotate(25deg)`,
-        }}
-      />
-      <div
-        className="absolute -bottom-6 left-4 w-10 h-16 sm:w-14 sm:h-24 rounded-xl bg-gradient-to-tr from-cyan-400/25 via-sky-500/15 to-transparent border border-cyan-400/30 backdrop-blur-md -rotate-[20deg] shadow-[0_0_20px_rgba(6,182,212,0.2)] pointer-events-none transition-transform duration-700"
-        style={{
-          transform: `translate(${mousePos.x * -0.4}px, ${mousePos.y * -0.4}px) rotate(-20deg)`,
-        }}
-      />
 
       {/* Main Ring Showcase Container with 3D Depth and Tilt */}
       <div
-        className="relative group cursor-pointer w-full max-w-[280px] sm:max-w-[360px] md:max-w-[420px] lg:max-w-[480px] xl:max-w-[530px] flex items-center justify-center transition-all duration-300"
+        className="relative group cursor-pointer w-full max-w-[340px] sm:max-w-[460px] md:max-w-[540px] lg:max-w-[620px] xl:max-w-[720px] 2xl:max-w-[800px] flex items-center justify-center transition-all duration-300"
         style={{
           perspective: '1200px',
         }}
         onClick={() => setIsZoomed(!isZoomed)}
       >
+        {/* Flanking Side Diamond - LEFT (Exquisite, smaller than the center solitaire) */}
+        <FlankingDiamond side="left" mousePos={mousePos} onClick={onExplore} />
+
+        {/* Flanking Side Diamond - RIGHT (Exquisite, smaller than the center solitaire) */}
+        <FlankingDiamond side="right" mousePos={mousePos} onClick={onExplore} />
+
         {/* Ring Image Frame with High Clarity Lighting */}
         <div
-          className="relative w-full aspect-square flex items-center justify-center rounded-3xl transition-transform duration-500 ease-out"
+          className="relative w-full aspect-square flex items-center justify-center rounded-3xl transition-transform duration-500 ease-out z-10"
           style={{
             transform: `rotateX(${-mousePos.y * 0.45}deg) rotateY(${mousePos.x * 0.45}deg) scale(${
               isZoomed ? 1.15 : 1.0
@@ -118,9 +119,39 @@ export const FuturisticRingHero: React.FC<FuturisticRingHeroProps> = ({ onExplor
           {/* Prismatic Light Flare Overlay */}
           <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-cyan-500/10 via-transparent to-white/15 opacity-60 pointer-events-none mix-blend-screen" />
 
+          {/* Left Companion Flank Diamond on Ring Setting */}
+          <div
+            className="absolute top-[43%] left-[33%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-15"
+            style={{
+              transform: `translate(${mousePos.x * 0.45}px, ${mousePos.y * 0.45}px)`,
+            }}
+          >
+            <div className="relative w-8 h-8 sm:w-11 sm:h-11 rounded-full flex items-center justify-center">
+              <div className="absolute inset-0 rounded-full bg-cyan-400/40 blur-sm animate-pulse" />
+              <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-gradient-to-tr from-white via-cyan-100 to-sky-300 border border-white/95 shadow-[0_0_18px_rgba(255,255,255,1),0_0_28px_rgba(6,182,212,0.85)] flex items-center justify-center">
+                <Sparkles className="w-3 h-3 text-cyan-500" />
+              </div>
+            </div>
+          </div>
+
+          {/* Right Companion Flank Diamond on Ring Setting */}
+          <div
+            className="absolute top-[43%] right-[33%] translate-x-1/2 -translate-y-1/2 pointer-events-none z-15"
+            style={{
+              transform: `translate(${mousePos.x * 0.45}px, ${mousePos.y * 0.45}px)`,
+            }}
+          >
+            <div className="relative w-8 h-8 sm:w-11 sm:h-11 rounded-full flex items-center justify-center">
+              <div className="absolute inset-0 rounded-full bg-cyan-400/40 blur-sm animate-pulse" />
+              <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-gradient-to-tr from-white via-cyan-100 to-sky-300 border border-white/95 shadow-[0_0_18px_rgba(255,255,255,1),0_0_28px_rgba(6,182,212,0.85)] flex items-center justify-center">
+                <Sparkles className="w-3 h-3 text-cyan-500" />
+              </div>
+            </div>
+          </div>
+
           {/* Sparkle Glint 1 (Center Diamond Fire) */}
           <div
-            className="absolute top-[41%] left-[49%] -translate-x-1/2 -translate-y-1/2 pointer-events-none animate-pulse"
+            className="absolute top-[41%] left-[49%] -translate-x-1/2 -translate-y-1/2 pointer-events-none animate-pulse z-20"
             style={{
               transform: `translate(${mousePos.x * 0.6}px, ${mousePos.y * 0.6}px)`,
             }}
@@ -131,7 +162,7 @@ export const FuturisticRingHero: React.FC<FuturisticRingHeroProps> = ({ onExplor
 
           {/* Sparkle Glint 2 (Pavé Halo Edge Refraction) */}
           <div
-            className="absolute top-[27%] left-[34%] pointer-events-none"
+            className="absolute top-[27%] left-[34%] pointer-events-none z-20"
             style={{
               transform: `translate(${mousePos.x * -0.5}px, ${mousePos.y * -0.5}px)`,
               animation: 'jewelGlint 3s infinite ease-in-out',
@@ -142,7 +173,7 @@ export const FuturisticRingHero: React.FC<FuturisticRingHeroProps> = ({ onExplor
 
           {/* Sparkle Glint 3 (Platinum Shank Highlight) */}
           <div
-            className="absolute bottom-[28%] right-[32%] pointer-events-none animate-pulse"
+            className="absolute bottom-[28%] right-[32%] pointer-events-none animate-pulse z-20"
             style={{
               animationDuration: '2.5s',
             }}
@@ -210,51 +241,6 @@ export const FuturisticRingHero: React.FC<FuturisticRingHeroProps> = ({ onExplor
             );
           })}
         </div>
-
-        {/* Macro Clarity Zoom Pill Button on the Ring */}
-        <div
-          onClick={(e) => {
-            e.stopPropagation();
-            setIsZoomed(!isZoomed);
-          }}
-          title={isZoomed ? 'Reset zoom' : 'Inspect 8K diamond clarity'}
-          className="absolute top-2 right-2 sm:top-4 sm:right-4 z-30 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-950/85 hover:bg-slate-900 border border-cyan-400/50 hover:border-cyan-300 text-cyan-300 text-xs font-medium backdrop-blur-xl shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
-        >
-          {isZoomed ? (
-            <>
-              <ZoomOut className="w-3.5 h-3.5 text-cyan-400" />
-              <span className="hidden sm:inline">Macro Zoom: Active</span>
-            </>
-          ) : (
-            <>
-              <ZoomIn className="w-3.5 h-3.5 text-cyan-400" />
-              <span className="hidden sm:inline">8K Macro Clarity</span>
-            </>
-          )}
-        </div>
-      </div>
-
-      {/* Telemetry Gemological Inspection HUD Pill at Bottom */}
-      <div
-        onClick={onExplore}
-        className="absolute -bottom-2 right-2 sm:right-8 bg-slate-950/90 hover:bg-slate-900 backdrop-blur-2xl border border-cyan-400/50 hover:border-cyan-300 rounded-2xl px-4 py-2.5 shadow-[0_0_30px_rgba(6,182,212,0.35)] flex items-center gap-3.5 transition-all cursor-pointer group hover:scale-[1.03] z-20"
-      >
-        <div className="relative flex items-center justify-center">
-          <span className="w-3 h-3 rounded-full bg-cyan-400 animate-ping absolute" />
-          <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 relative" />
-        </div>
-        <div className="text-left">
-          <div className="text-[11px] sm:text-xs font-tech text-cyan-300 font-bold uppercase tracking-wider flex items-center gap-2">
-            <span>SOLARIS NOCTURNE</span>
-            <span className="text-slate-500">•</span>
-            <span className="text-emerald-400 font-mono">5.42 CT</span>
-          </div>
-          <div className="text-[10px] text-slate-300 font-mono tracking-tight flex items-center gap-2">
-            <span className="text-slate-400">D-FLAWLESS OPTICAL 8K</span>
-            <span className="text-cyan-400 font-bold group-hover:underline">INSPECT ATELIER →</span>
-          </div>
-        </div>
-        <Eye className="w-4 h-4 text-cyan-400 group-hover:text-cyan-200 transition-colors ml-1" />
       </div>
     </div>
   );

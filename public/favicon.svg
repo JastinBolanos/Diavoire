@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Elegant dark cartouche background for perfect contrast in both light and dark browser tabs -->
+  <rect width="64" height="64" rx="14" fill="#020515" />
+  
+  <!-- Crown Table (Solid White) -->
+  <polygon points="20,12 44,12 38,24 26,24" fill="#FFFFFF" />
+  
+  <!-- Crown Star & Kite Facets (Solid Cyan) -->
+  <polygon points="20,12 26,24 9,24" fill="#00E5FF" />
+  <polygon points="44,12 55,24 38,24" fill="#00E5FF" />
+  
+  <!-- Crown Outer Bezels (Solid White) -->
+  <polygon points="20,12 9,24 6,24" fill="#FFFFFF" />
+  <polygon points="44,12 58,24 55,24" fill="#FFFFFF" />
+  
+  <!-- Pavilion Center Triangle (Solid White) -->
+  <polygon points="26,26 38,26 32,54" fill="#FFFFFF" />
+  
+  <!-- Pavilion Mid Facets (Solid Cyan) -->
+  <polygon points="9,26 26,26 32,54" fill="#00E5FF" />
+  <polygon points="38,26 55,26 32,54" fill="#00E5FF" />
+  
+  <!-- Pavilion Outer Facets (Solid White) -->
+  <polygon points="6,26 9,26 32,54" fill="#FFFFFF" />
+  <polygon points="55,26 58,26 32,54" fill="#FFFFFF" />
+</svg>

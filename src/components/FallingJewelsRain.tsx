@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Eye } from 'lucide-react';
+import { Eye } from 'lucide-react';
 import { ALL_JEWELRY } from '../data/jewelry';
 import { JewelryItem } from '../types';
 
@@ -22,7 +22,6 @@ interface FallingJewelsRainProps {
 }
 
 export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJewel }) => {
-  const [isPaused, setIsPaused] = useState(false);
   const [hoveredJewelId, setHoveredJewelId] = useState<string | null>(null);
 
   const fallingJewels: FallingJewelConfig[] = [
@@ -134,20 +133,6 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-20 perspective-jewel">
-      {/* Botón sutil en esquina inferior del Hero para pausar o admirar la lluvia cósmica */}
-      <div className="absolute top-4 right-4 sm:right-8 z-30 pointer-events-auto">
-        <button
-          onClick={() => setIsPaused(!isPaused)}
-          title={isPaused ? 'Resume falling jewels' : 'Pause falling jewels'}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-950/80 hover:bg-slate-900 border border-cyan-500/30 hover:border-cyan-400 text-cyan-300 text-[11px] font-mono tracking-wider backdrop-blur-md shadow-[0_0_15px_rgba(6,182,212,0.3)] transition-all duration-300 cursor-pointer group"
-        >
-          <Sparkles className={`w-3.5 h-3.5 text-cyan-400 ${isPaused ? '' : 'animate-spin'}`} />
-          <span className="hidden sm:inline font-sans">
-            {isPaused ? 'Jewels Fall: Paused' : 'Jewels Cascade: Active'}
-          </span>
-        </button>
-      </div>
-
       {/* Conjunto de Joyas Cayendo y Rotando en 3D */}
       {fallingJewels.map((j) => {
         const isHovered = hoveredJewelId === j.id;
@@ -162,7 +147,7 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
               height: `${j.size}px`,
               animation: `fallJewel ${j.durationSec}s cubic-bezier(0.4, 0.0, 0.2, 1) infinite`,
               animationDelay: `${j.delaySec}s`,
-              animationPlayState: isPaused || isHovered ? 'paused' : 'running',
+              animationPlayState: isHovered ? 'paused' : 'running',
               willChange: 'transform, opacity',
             }}
             onMouseEnter={() => setHoveredJewelId(j.id)}
