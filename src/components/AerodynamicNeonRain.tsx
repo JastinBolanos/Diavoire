@@ -240,8 +240,8 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
           rip.y = y;
           rip.rx = 2;
           rip.ry = 1;
-          rip.maxRx = maxRx;
-          rip.alpha = alpha;
+          rip.maxRx = Math.max(4, maxRx);
+          rip.alpha = Math.max(0.1, Math.min(alpha, 1));
           rip.color = currentPalette.primary;
           break;
         }
@@ -319,9 +319,9 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
     const render = (now: number) => {
       if (!isRunning) return;
 
-      const deltaMs = now - lastTime;
+      const deltaMs = Math.max(0, now - lastTime);
       lastTime = now;
-      const dt = Math.min(deltaMs / 16.667, 1.8);
+      const dt = Math.min(Math.max(deltaMs / 16.667, 0.01), 1.8);
 
       ctx.clearRect(0, 0, cssWidth, cssHeight);
       ctx.globalCompositeOperation = 'lighter';
@@ -379,19 +379,22 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
           const rip = ripplesPool[r];
           if (!rip.active) continue;
 
-          rip.rx += (rip.maxRx - rip.rx) * 0.12 * dt + 0.25 * dt;
-          rip.ry = rip.rx * 0.5;
+          rip.rx = Math.max(0, rip.rx + (rip.maxRx - rip.rx) * 0.12 * dt + 0.25 * dt);
+          rip.ry = Math.max(0, rip.rx * 0.5);
           rip.alpha -= 0.028 * dt;
 
-          if (rip.alpha <= 0.01 || rip.rx >= rip.maxRx) {
+          if (rip.alpha <= 0.01 || rip.rx <= 0.05 || rip.ry <= 0.05 || rip.rx >= rip.maxRx) {
             rip.active = false;
             continue;
           }
 
+          const safeRx = Math.max(0.1, rip.rx);
+          const safeRy = Math.max(0.1, rip.ry);
+
           ctx.strokeStyle = rip.color;
-          ctx.globalAlpha = Math.max(rip.alpha, 0);
+          ctx.globalAlpha = Math.max(0, Math.min(rip.alpha, 1));
           ctx.beginPath();
-          ctx.ellipse(rip.x, rip.y, rip.rx, rip.ry, 0, 0, Math.PI * 2);
+          ctx.ellipse(rip.x, rip.y, safeRx, safeRy, 0, 0, Math.PI * 2);
           ctx.stroke();
         }
       }
@@ -413,7 +416,7 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
           }
 
           ctx.fillStyle = sp.color;
-          ctx.globalAlpha = Math.max(sp.alpha, 0);
+          ctx.globalAlpha = Math.max(0, Math.min(sp.alpha, 1));
           ctx.beginPath();
           ctx.arc(sp.x, sp.y, 1.1, 0, Math.PI * 2);
           ctx.fill();
@@ -438,8 +441,9 @@ export const AerodynamicNeonRain: React.FC<AerodynamicNeonRainProps> = ({
           orb.baseX = -30;
         }
 
-        ctx.globalAlpha = orb.alpha * (0.7 + Math.sin(orb.phase * 2) * 0.3);
-        const drawSize = orb.radius * 2;
+        const orbAlpha = Math.max(0, Math.min(orb.alpha * (0.7 + Math.sin(orb.phase * 2) * 0.3), 1));
+        ctx.globalAlpha = orbAlpha;
+        const drawSize = Math.max(1, orb.radius * 2);
         ctx.drawImage(orbSprite, orb.x - orb.radius, orb.y - orb.radius, drawSize, drawSize);
       }
 
