@@ -108,8 +108,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
         </div>
 
-        {/* Right Column: Giant Futuristic Diamond Ring Showcase */}
-        <div className="lg:col-span-6 xl:col-span-7 flex items-center justify-center relative min-h-[220px] sm:min-h-[280px] lg:min-h-[340px]">
+        {/* Right Column: Futuristic Diamond Ring Showcase */}
+        <div className="lg:col-span-6 xl:col-span-7 flex items-center justify-center relative min-h-[260px] sm:min-h-[340px] lg:min-h-[420px] xl:min-h-[480px] w-full">
           <FuturisticRingHero onExplore={onExplore} />
         </div>
       </div>

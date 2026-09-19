@@ -16,6 +16,7 @@ import { CartDrawer } from './components/CartDrawer';
 import { WishlistDrawer } from './components/WishlistDrawer';
 import { VipClubModal } from './components/VipClubModal';
 import { ProfileModal } from './components/ProfileModal';
+import { AerodynamicNeonRain } from './components/AerodynamicNeonRain';
 import { ChevronDown } from 'lucide-react';
 
 export default function App() {
@@ -163,15 +164,19 @@ export default function App() {
       {/* Epic High-Definition Photographic Background Image (Anchored to Hero Screen) */}
       <div className="absolute top-0 inset-x-0 h-screen pointer-events-none z-0 overflow-hidden">
         <img
-          src="/epic-bg.jpg"
-          alt="Diavoire Luxury High-Jewelry Background"
-          className="w-full h-full object-cover object-right lg:object-center opacity-95"
+          src="/luxury-cosmic-bg.jpg"
+          alt="Diavoire Luxury Celestial Background"
+          referrerPolicy="no-referrer"
+          className="w-full h-full object-cover object-center opacity-85"
         />
         {/* Deep noir gradient overlay on the left side to guarantee flawless text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#020515] via-[#020515]/85 to-transparent w-full lg:w-3/5" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#020515] via-[#020515]/80 to-transparent w-full lg:w-3/5" />
         {/* Soft bottom vignette to seat the featured pieces shelf */}
         <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#020515] via-[#020515]/80 to-transparent" />
       </div>
+
+      {/* Aerodynamic Neon Rain Full-screen Canvas Animation */}
+      <AerodynamicNeonRain palette="pearlescent-blue" zIndex={1} opacity={0.9} />
 
       {/* 1. HERO VIEWPORT (First Screen - Exactly fills the initial viewport) */}
       <div className="relative z-10 min-h-screen lg:h-screen lg:min-h-[700px] flex flex-col justify-between w-full">

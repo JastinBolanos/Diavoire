@@ -25,133 +25,119 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
   const [isPaused, setIsPaused] = useState(false);
   const [hoveredJewelId, setHoveredJewelId] = useState<string | null>(null);
 
-  // Mapeamos joyas reales del catálogo para que caigan anillos, collares, colgantes y gemas
+  // Mapeamos joyas reales del catálogo para que caigan en los laterales sin obstruir el anillo central
   const fallingJewels: FallingJewelConfig[] = [
-    // 1. Solitaire Diamond Ring (Anillo de Diamante)
+    // 1. Solitaire Diamond Ring (Lateral Izquierdo)
     {
       id: 'fall-ring-1',
       item: ALL_JEWELRY.find((j) => j.id === 'dia-3') || ALL_JEWELRY[2],
-      leftPercent: 58,
-      size: 78,
-      durationSec: 13,
+      leftPercent: 12,
+      size: 64,
+      durationSec: 26,
       delaySec: 0,
-      swayAmplitude: 35,
-      rotationSpeed: 1,
+      swayAmplitude: 16,
+      rotationSpeed: 0.6,
       initialRotateZ: -12,
-      glowColor: 'rgba(6,182,212,0.6)',
+      glowColor: 'rgba(6,182,212,0.4)',
       shape: 'round',
     },
-    // 2. Diamond Infinity Pendant (Collar / Colgante)
+    // 2. Diamond Infinity Pendant (Lateral Derecho)
     {
       id: 'fall-necklace-1',
       item: ALL_JEWELRY.find((j) => j.id === 'dia-1') || ALL_JEWELRY[0],
-      leftPercent: 72,
-      size: 72,
-      durationSec: 15,
-      delaySec: 2.5,
-      swayAmplitude: 25,
-      rotationSpeed: 0.8,
+      leftPercent: 84,
+      size: 66,
+      durationSec: 29,
+      delaySec: 3.5,
+      swayAmplitude: 18,
+      rotationSpeed: 0.5,
       initialRotateZ: 15,
-      glowColor: 'rgba(168,85,247,0.6)',
+      glowColor: 'rgba(168,85,247,0.4)',
       shape: 'octagon',
     },
-    // 3. Colombian Emerald Halo Ring (Anillo Esmeralda)
+    // 3. Colombian Emerald Halo Ring (Extremo Derecho)
     {
       id: 'fall-ring-2',
       item: ALL_JEWELRY.find((j) => j.id === 'dia-2') || ALL_JEWELRY[1],
-      leftPercent: 86,
-      size: 82,
-      durationSec: 12,
-      delaySec: 5,
-      swayAmplitude: 40,
-      rotationSpeed: 1.2,
+      leftPercent: 92,
+      size: 70,
+      durationSec: 25,
+      delaySec: 8,
+      swayAmplitude: 20,
+      rotationSpeed: 0.7,
       initialRotateZ: 22,
-      glowColor: 'rgba(16,185,129,0.6)',
+      glowColor: 'rgba(16,185,129,0.4)',
       shape: 'cushion',
     },
-    // 4. Diamond Drop Earrings (Aretes Colgantes)
+    // 4. Diamond Drop Earrings (Lateral Izquierdo)
     {
       id: 'fall-earring-1',
       item: ALL_JEWELRY.find((j) => j.id === 'dia-4') || ALL_JEWELRY[3],
-      leftPercent: 44,
-      size: 68,
-      durationSec: 16,
-      delaySec: 1.2,
-      swayAmplitude: 20,
-      rotationSpeed: 0.9,
+      leftPercent: 22,
+      size: 60,
+      durationSec: 32,
+      delaySec: 2,
+      swayAmplitude: 14,
+      rotationSpeed: 0.55,
       initialRotateZ: -18,
-      glowColor: 'rgba(217,70,239,0.5)',
+      glowColor: 'rgba(217,70,239,0.35)',
       shape: 'octagon',
     },
-    // 5. Tennis Bracelet (Pulsera de Diamantes)
+    // 5. Tennis Bracelet (Borde Derecho)
     {
       id: 'fall-bracelet-1',
       item: ALL_JEWELRY.find((j) => j.id === 'dia-5') || ALL_JEWELRY[4],
-      leftPercent: 93,
-      size: 76,
-      durationSec: 14,
-      delaySec: 7,
-      swayAmplitude: 30,
-      rotationSpeed: 1.1,
+      leftPercent: 96,
+      size: 65,
+      durationSec: 28,
+      delaySec: 12,
+      swayAmplitude: 16,
+      rotationSpeed: 0.6,
       initialRotateZ: 8,
-      glowColor: 'rgba(56,189,248,0.5)',
+      glowColor: 'rgba(56,189,248,0.35)',
       shape: 'round',
     },
-    // 6. Hyperion Blue Diamond Ring (Anillo Azul Espacial)
+    // 6. Hyperion Blue Diamond Ring (Lateral Exterior)
     {
       id: 'fall-ring-3',
       item: ALL_JEWELRY.find((j) => j.id === 'dia-7') || ALL_JEWELRY[2],
-      leftPercent: 64,
-      size: 85,
-      durationSec: 17,
-      delaySec: 9,
-      swayAmplitude: 45,
-      rotationSpeed: 0.7,
+      leftPercent: 78,
+      size: 68,
+      durationSec: 34,
+      delaySec: 15,
+      swayAmplitude: 20,
+      rotationSpeed: 0.45,
       initialRotateZ: -25,
-      glowColor: 'rgba(14,165,233,0.7)',
+      glowColor: 'rgba(14,165,233,0.4)',
       shape: 'octagon',
     },
-    // 7. Aurelia Rose Gold Ring (Anillo Dorado)
+    // 7. Aurelia Rose Gold Ring (Extremo Izquierdo)
     {
       id: 'fall-ring-4',
       item: ALL_JEWELRY.find((j) => j.id === 'dia-8') || ALL_JEWELRY[1],
-      leftPercent: 80,
-      size: 74,
-      durationSec: 11.5,
-      delaySec: 3.8,
-      swayAmplitude: 28,
-      rotationSpeed: 1.3,
+      leftPercent: 6,
+      size: 62,
+      durationSec: 27,
+      delaySec: 6,
+      swayAmplitude: 15,
+      rotationSpeed: 0.7,
       initialRotateZ: 18,
-      glowColor: 'rgba(245,158,11,0.6)',
+      glowColor: 'rgba(245,158,11,0.4)',
       shape: 'cushion',
     },
-    // 8. Royal Sapphire Choker (Collar Choker de Zafiro)
+    // 8. Royal Sapphire Choker (Lateral Izquierdo Centro)
     {
       id: 'fall-necklace-2',
       item: ALL_JEWELRY.find((j) => j.id === 'dia-9') || ALL_JEWELRY[0],
-      leftPercent: 50,
-      size: 84,
-      durationSec: 18,
-      delaySec: 11,
-      swayAmplitude: 35,
-      rotationSpeed: 0.85,
+      leftPercent: 32,
+      size: 68,
+      durationSec: 36,
+      delaySec: 18,
+      swayAmplitude: 18,
+      rotationSpeed: 0.5,
       initialRotateZ: -10,
-      glowColor: 'rgba(99,102,241,0.7)',
+      glowColor: 'rgba(99,102,241,0.4)',
       shape: 'round',
-    },
-    // 9. Celestial Diamond Glint (Diamante Luminoso en el lado izquierdo/central)
-    {
-      id: 'fall-ring-5',
-      item: ALL_JEWELRY.find((j) => j.id === 'dia-6') || ALL_JEWELRY[3],
-      leftPercent: 36,
-      size: 65,
-      durationSec: 15.5,
-      delaySec: 6.2,
-      swayAmplitude: 22,
-      rotationSpeed: 1.0,
-      initialRotateZ: 30,
-      glowColor: 'rgba(6,182,212,0.5)',
-      shape: 'octagon',
     },
   ];
 
@@ -199,10 +185,9 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
               }`}
               style={{
                 background:
-                  'radial-gradient(circle at 35% 30%, rgba(255,255,255,0.18), rgba(2,6,23,0.85) 75%)',
-                boxShadow: `0 0 25px ${j.glowColor}, inset 0 0 15px rgba(255,255,255,0.2)`,
-                border: '1.5px solid rgba(255,255,255,0.35)',
-                backdropFilter: 'blur(8px)',
+                  'radial-gradient(circle at 35% 30%, rgba(30,58,138,0.25), rgba(2,6,23,0.92) 80%)',
+                boxShadow: `0 0 16px ${j.glowColor}, inset 0 0 10px rgba(255,255,255,0.15)`,
+                border: '1.5px solid rgba(255,255,255,0.3)',
               }}
             >
               {/* Joya: Imagen en alta definición */}
