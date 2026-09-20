@@ -133,7 +133,7 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-20 perspective-jewel">
-      {/* Conjunto de Joyas Cayendo y Rotando en 3D */}
+      {/* 3D Falling and Rotating Jewels Stream */}
       {fallingJewels.map((j) => {
         const isHovered = hoveredJewelId === j.id;
 
@@ -154,7 +154,7 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
             onMouseLeave={() => setHoveredJewelId(null)}
             onClick={() => onSelectJewel(j.item)}
           >
-            {/* Jewel Card Container con Giro 3D y Borde de Cristal Facetado */}
+            {/* Jewel Card Container with 3D Spin and Faceted Crystal Border */}
             <div
               className={`relative w-full h-full p-1.5 rounded-2xl transition-transform duration-300 ${
                 isHovered ? 'scale-125 z-40' : 'hover:scale-110'
@@ -166,7 +166,7 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
                 border: '1.5px solid rgba(255,255,255,0.3)',
               }}
             >
-              {/* Joya: Imagen en alta definición */}
+              {/* Jewel: High Definition Photographic Display */}
               <div className="w-full h-full rounded-xl overflow-hidden relative flex items-center justify-center bg-black/40">
                 <img
                   src={j.item.image}
@@ -175,7 +175,7 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
                   loading="eager"
                 />
 
-                {/* Brillo de refracción sobre la gema */}
+                {/* Refractive Diamond Shimmer on Gemstone */}
                 <div
                   className="absolute -top-1 -right-1 w-4 h-4 bg-white rounded-full blur-[1px] opacity-80 animate-pulse pointer-events-none"
                   style={{
@@ -183,11 +183,11 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
                   }}
                 />
 
-                {/* Reflejo prismático dinámico */}
+                {/* Dynamic Prismatic Light Flare */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 via-transparent to-white/30 opacity-60 pointer-events-none" />
               </div>
 
-              {/* Destello estelar parpadeante en esquina opuesta */}
+              {/* Stellar Sparkle Glint on Corner */}
               <div
                 className="absolute -bottom-1 -left-1 w-3 h-3 text-cyan-200 pointer-events-none"
                 style={{ animation: 'jewelGlint 2.5s infinite ease-in-out' }}
@@ -195,7 +195,7 @@ export const FallingJewelsRain: React.FC<FallingJewelsRainProps> = ({ onSelectJe
                 ✦
               </div>
 
-              {/* Tooltip flotante al hacer hover para ver detalles */}
+              {/* Floating Tooltip on Hover to Inspect Details */}
               {isHovered && (
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-44 p-2 rounded-xl bg-slate-950/95 border border-cyan-400/60 shadow-[0_0_25px_rgba(6,182,212,0.6)] backdrop-blur-md text-left z-50 animate-in fade-in zoom-in-90 duration-150 pointer-events-none">
                   <div className="flex items-center justify-between text-[10px] text-cyan-300 font-mono mb-0.5">
