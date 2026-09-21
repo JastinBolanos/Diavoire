@@ -1,51 +1,81 @@
 <div align="center">
+  <img alt="Diavoire Banner" src="https://github.com/user-attachments/assets/9d383b26-0a7e-44db-ab58-3e1988f4807c" width="50%" />
 
-# 💎 Diavoire — Haute Joaillerie & Fine Diamonds
+  <br>
 
-An immersive high-jewelry digital boutique pairing contemporary luxury aesthetics, fluid real-time interactivity, and clean modular front-end architecture.
+  <h3>💎 Diavoire — Haute Joaillerie & Fine Diamonds (v1.0.0-PROD)</h3>
 
-[![React](https://img.shields.io/badge/React_18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![HTML5 Canvas](https://img.shields.io/badge/HTML5_Canvas-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
-[![Lucide Icons](https://img.shields.io/badge/Lucide_Icons-F56565?style=for-the-badge&logo=feather&logoColor=white)](https://lucide.dev/)
-
+  <p>
+    <img src="https://img.shields.io/badge/build-passing-brightgreen" alt="Build Status" />
+    <img src="https://img.shields.io/badge/deployment-production-blue" alt="Deployment" />
+    <img src="https://img.shields.io/badge/version-1.0.0--PROD-orange" alt="Version" />
+    <img src="https://img.shields.io/badge/performance-optimized-success" alt="Performance" />
+  </p>
 </div>
+
+<br>
+
+> **Interactive E-Commerce & Haute Joaillerie Experience.**  
+> An immersive high-jewelry digital boutique pairing contemporary luxury aesthetics, fluid real-time interactivity, and clean modular front-end architecture.
+
+<br>
+
+<div align="center">
+  <h3>🌍 <b><a href="https://diavoire.vercel.app/">View Live Platform (Production) 🟢</a></b></h3>
+  <br>
+  <img alt="Diavoire Preview" src="https://github.com/user-attachments/assets/d1f1501c-5334-4826-9143-857b5ac4ed5d" width="90%" />
+</div>
+
+## 🎥 Digital Boutique Demo
+
+**🎬 Haute Joaillerie Experience & UI Walkthrough**  
+Walkthrough of the luxury interface: exploring the interactive 2.5D jewel hero showcase, HTML5 Canvas particle effects, bespoke commission atelier, modal perspectives, and smooth slide-out drawers.
+
+https://github.com/user-attachments/assets/9c6db202-074e-4fe1-9310-31024b0455a0
 
 ---
 
-## 💎 Project Vision
+### 🌟 Project Vision & Overview
 
 **Diavoire** was conceived to bring the prestige, intimacy, and tactile elegance of a premier Parisian high-jewelry maison into an interactive digital environment. Moving beyond conventional e-commerce layouts, the application establishes a multi-sensory experience: cosmic ambient lighting, hardware-accelerated aerodynamic particle dynamics rendered on HTML5 Canvas, and an interactive master archive showcasing natural, GIA-certified diamonds and celestial gemstones.
 
 ---
 
-## ✨ Key Features
+### ✨ Key Features
 
-### 1. Visual Atmosphere & Immersive Experience
-* **Interactive Hero & Solitaire Showcase**: Central showcase with 3D tilt tracking, manual rotation controls, progressive zoom inspection, and interactive gemological hotspots detailing carat weight, VVS1 clarity, and solid 950 platinum cathedral settings.
-* **Aerodynamic Particle Simulation**: High-performance `<canvas>` physics engine running at 60/120 FPS. Features elliptical impact ripples, gravitational spark dispersion, and selectable chromatic palettes (*Pearlescent Blue* & *Neon Emerald*).
-* **Cascading Jewels Rain**: Atmospheric tumbling jewels drifting in the peripheral viewport that users can click to inspect product specifications directly.
+* 🌌 **Visual Atmosphere & Immersive Experience**
+  * **Interactive Hero & Solitaire Showcase**: Central showcase with 3D tilt tracking, manual rotation controls, progressive zoom inspection, and interactive gemological hotspots detailing carat weight, VVS1 clarity, and solid 950 platinum cathedral settings.
+  * **Aerodynamic Particle Simulation**: High-performance `<canvas>` physics engine running at 60/120 FPS. Features elliptical impact ripples, gravitational spark dispersion, and selectable chromatic palettes (*Pearlescent Blue* & *Neon Emerald*).
+  * **Cascading Jewels Rain**: Atmospheric tumbling jewels drifting in the peripheral viewport that users can click to inspect product specifications directly.
 
-### 2. Master Catalog & Real-Time Filtering
-* **Multi-Factor Filtering**: Instant live search by keyword, category tabs (*All*, *Rings*, *Necklaces & Pendants*, *Earrings*, *Bracelets*), and precious metals (*950 Platinum*, *18K White Gold*, *Rose Gold*, *18K Yellow Gold*).
-* **Dynamic Sorting**: Instant reordering by featured curation, price (ascending/descending), and total carat weight.
-* **12 Masterpiece Creations**: Each piece features high-definition photography, full 4Cs gemological specifications, conflict-free sourcing verification, and armored delivery guarantees.
+* 📖 **Master Catalog & Real-Time Filtering**
+  * **Multi-Factor Filtering**: Instant live search by keyword, category tabs (*All*, *Rings*, *Necklaces & Pendants*, *Earrings*, *Bracelets*), and precious metals (*950 Platinum*, *18K White Gold*, *Rose Gold*, *18K Yellow Gold*).
+  * **Dynamic Sorting**: Instant reordering by featured curation, price (ascending/descending), and total carat weight.
+  * **12 Masterpiece Creations**: Each piece features high-definition photography, full 4Cs gemological specifications, conflict-free sourcing verification, and armored delivery guarantees.
 
-### 3. Interactive Client-Side Commerce
-* **Vault Bag (Cart Drawer)**: Ring size selector, real-time quantity adjustments, automatic subtotal calculations, and armored delivery checkout dispatch.
-* **Private Wishlist Drawer**: Fast saving and management of favorite creations with one-click transfer into the shopping bag.
-* **Gemological Product Modal**: Deep inspection dialog with macro imagery, 4Cs rating badges, metal purity seals, and craftsmanship notes.
-* **Private VIP Club & Bespoke Atelier**: Dedicated reservation modals for private atelier appointments and custom commission consultations.
+* 🛍️ **Interactive Client-Side Commerce**
+  * **Vault Bag (Cart Drawer)**: Ring size selector, real-time quantity adjustments, automatic subtotal calculations, and armored delivery checkout dispatch.
+  * **Private Wishlist Drawer**: Fast saving and management of favorite creations with one-click transfer into the shopping bag.
+  * **Gemological Product Modal**: Deep inspection dialog with macro imagery, 4Cs rating badges, metal purity seals, and craftsmanship notes.
+  * **Private VIP Club & Bespoke Atelier**: Dedicated reservation modals for private atelier appointments and custom commission consultations.
 
 ---
 
-## 🏛️ Clean Architecture & Modularity
+### 🛠️ Technology Stack
+
+* **Client & Core**: React 18 + TypeScript
+* **Styling & Layout**: Tailwind CSS
+* **Visuals & Canvas**: HTML5 Canvas 2D API
+* **Iconography**: Lucide React
+* **Build Tool**: Vite
+
+---
+
+### 🏛️ Clean Architecture & Modularity
 
 The codebase is strictly organized around clean separation of concerns, ensuring high maintainability and developer ergonomics:
 
-```
+```text
 src/
 ├── types/                 # Strict domain models and interfaces (TypeScript)
 │   ├── jewelry.ts         # Jewelry items, categories, cuts, and metals
